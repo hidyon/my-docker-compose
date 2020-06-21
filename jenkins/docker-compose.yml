@@ -1,0 +1,27 @@
+# jenkins
+#
+# $ sudo mkidr ./jenkins_home
+# $ sudo chown -R 1000 ./jenkins_home
+# $ docker-compose up -d
+#
+# see jenkins's password
+# $ docker logs jenkins-master
+#
+version: "3"
+services:
+  jenkins-master:
+    container_name: jenkins-master
+    image: jenkins/jenkins:latest
+    ports:
+      - 8080:8080
+      - 50000:50000
+    volumes:
+      - ./jenkins_home:/var/jenkins_home
+#    links:
+#     - slave01
+#
+#  slave01:
+#    container_name: slave01
+#    image: jenkinsci/ssh-slave
+#    environment:
+#      - JENKINS_SLAVE_SSH_PUBKEY=ssh-rsa AAAxxxxxxxxxxxx

@@ -1,0 +1,19 @@
+# theiaide    vscode for web.
+#
+# $ mkdir data
+# $ chmod 777 data
+# $ cd data
+# $ mv <this file> ./
+# $ docker-compose up -d
+#
+version: "3"
+services:
+  theiaide:
+    image: theiaide/theia
+    volumes:
+      - "./:/home/project:cached"
+    ports:
+      - 3000:3000
+    restart: always
+
+
