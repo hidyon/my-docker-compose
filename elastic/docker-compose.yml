@@ -9,7 +9,8 @@ version: "3"
 
 services:
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.2.0
+    # image: docker.elastic.co/elasticsearch/elasticsearch:7.2.0
+    image: hidyon/elasticsearch
     environment:
       - discovery.type=single-node
       - cluster.name=docker-cluster

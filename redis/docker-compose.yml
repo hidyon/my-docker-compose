@@ -1,0 +1,35 @@
+#
+# Redis & Redis GUI management tool
+#
+# $ mkdir -p redisinsight
+# $ chown -R 1001 redisinsight
+#
+
+version: "3"
+
+networks:
+  redisnet:
+    driver: bridge
+
+services:
+  redis:
+    image: redis:6.0-alpine
+    ports:
+      - 6379:6379
+    volumes:
+      - ./data/redis:/data
+      - ./redis.conf:/etc/redis/redis.conf
+    command: redis-server /etc/redis/redis.conf
+    networks:
+      - redisnet
+
+  redisinsight:
+    image: redislabs/redisinsight:latest
+    ports:
+      - 8001:8001
+    volumes:
+      - ./redisinsight:/db
+    networks:
+      - redisnet
+
+       

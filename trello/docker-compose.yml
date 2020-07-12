@@ -13,9 +13,17 @@ wekan:
     - ROOT_URL=http://localhost:80
   ports:
     - 80:8080
+  networks:
+    - wekannet
 
 wekandb:
    image: mongo
    restart: always
    volumes:
      - ./db:/data/db
+  networks:
+    - wekannet
+
+networks:
+  wekannet:
+
